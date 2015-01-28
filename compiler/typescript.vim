@@ -3,14 +3,6 @@ if exists("current_compiler")
 endif
 let current_compiler = "typescript"
 
-if !exists("g:typescript_compiler_binary")
-  let g:typescript_compiler_binary = "tsc"
-endif
-
-if !exists("g:typescript_compiler_options")
-  let g:typescript_compiler_options = ""
-endif
-
-let &l:makeprg = g:typescript_compiler_binary . ' ' . g:typescript_compiler_options . ' $*  %'
+CompilerSet makeprg=tsc\ \"$*\"\ --module\ commonjs\ -target\ ES5\ \"%\"
 
 CompilerSet errorformat=%+A\ %#%f\ %#(%l\\\,%c):\ %m,%C%m
